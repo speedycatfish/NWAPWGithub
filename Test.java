@@ -1,16 +1,18 @@
 import java.util.*;
 
 public class Test {
+	static Scanner scan;
+
 	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
+		scan = new Scanner(System.in);
 		loop: while (true) {
 			String input = scan.nextLine();
 			switch (input) {
 			case "start":
-
+				TakeTest();
 				break;
 			case "create":
-
+				CreateTest();
 				break;
 			case "stop":
 				break loop;
@@ -19,12 +21,11 @@ public class Test {
 		scan.close();
 	}
 
-	void TakeTest() {
+	static void TakeTest() {
 
 	}
 
-	void CreatTest() {
+	static void CreateTest() {
 
 	}
 }
-
