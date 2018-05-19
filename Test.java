@@ -12,7 +12,8 @@ public class Test {
 				TakeTest();
 				break;
 			case "create":
-				CreateTest();
+				String question = scan.nextLine();
+				CreateTest(question);
 				break;
 			case "stop":
 				break loop;
@@ -25,7 +26,7 @@ public class Test {
 
 	}
 
-	static void CreateTest() {
+	static void CreateTest(String question) {
 
 	}
 }
