@@ -1,7 +1,5 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Test {
 	static Scanner scan;
@@ -15,8 +13,8 @@ public class Test {
 				TakeTest();
 				break;
 			case "create":
-
-				CreateTest();
+				String question = scan.nextLine();
+				CreateTest(question);
 				break;
 			case "stop":
 				break loop;
@@ -26,34 +24,52 @@ public class Test {
 	}
 
 	static void TakeTest() {
-
-	}
-
-	static void CreateTest() {
-		System.out.println("Write your question");
-		String question = scan.nextLine();
-		System.out.println("Please type in the correct answer");
-		String c = scan.nextLine();
-		System.out.println("Please enter the first wrong answer");
-		String w1 = scan.nextLine();
-		System.out.println("Please enter the second wrong answer");
-		String w2 = scan.nextLine();
-		System.out.println("Please enter the third wrong answer");
-		String w3 = scan.nextLine();
-		System.out.println("Please enter the fourth wrong answer");
-		String w4 = scan.nextLine();
-		String options = c + ",~," + w1 + ",~," + w2 + ",~," + w3 + ",~," + w4;
-		BufferedWriter writer = null;
-		try
-		{
-		    writer = new BufferedWriter( new FileWriter("questions.txt"));
-		    writer.write(question);
-		    writer.newLine();
-		    writer.write(options);
-		    writer.newLine();
+		Scanner FindQuestion = new Scanner("questions.txt");
+		ArrayList<Question> Questions = new ArrayList<Questions>;
+		while(FindQuestion.hasNextLine){
+			String questionMsg = FindQuestion.nextLine();
+			String[] options = FindQuestion.nextLine().split(",~,");
+			Question question = new Question(questionMsg, options);
+			Questions.Add(question);
 		}
-		catch ( IOException e)
-		{
-		}
+		
+		System.out.println("");
 	}
+public class Question
+{
+  private String QuestionMsg;
+  private String[] Answers ;
+  public Questions(String q, String[] answers)
+  {
+    Answers = answers;
+    QuestionMsg = q;
+  }
+ static void AskQuestion() {
+    answer = Answers[0];
+    shuffledAnswers = shuffleArray(Answers);
+    System.out.println(QuestionMsg);
+    System.out.println(shuffledAnswers.join("/n"));
+	 Scaner answerInput = new Scanner(System.in);
+	String userAnswer = shuffledAnswers[answerInput.nextLine()-1];
+	 if (userAnswer.Equals(answer){
+	 System.out.println("Correct!");
+	 }
+	     else {
+		     System.out.println("Nope!");
+	     }
+ }
+	
+static String[] shuffleArray(String[] ar)
+  {
+    Random rnd = ThreadLocalRandom.current();
+    for (int i = ar.length - 1; i > 0; i--)
+    {
+      int index = rnd.nextInt(i + 1);
+      // Simple swap
+      int a = ar[index];
+      ar[index] = ar[i];
+      ar[i] = a;
+      return ar;
+    }
+  }
 }
