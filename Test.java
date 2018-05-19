@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 public class Test {
@@ -40,5 +43,17 @@ public class Test {
 		System.out.println("Please enter the fourth wrong answer");
 		String w4 = scan.nextLine();
 		String options = c + ",~," + w1 + ",~," + w2 + ",~," + w3 + ",~," + w4;
+		BufferedWriter writer = null;
+		try
+		{
+		    writer = new BufferedWriter( new FileWriter("questions.txt"));
+		    writer.write(question);
+		    writer.newLine();
+		    writer.write(options);
+		    writer.newLine();
+		}
+		catch ( IOException e)
+		{
+		}
 	}
 }
